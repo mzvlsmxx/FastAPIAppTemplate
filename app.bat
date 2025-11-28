@@ -121,24 +121,28 @@ goto status_all
 echo.
 echo -------------------^< APP LOGS ^>-----------------------
 docker logs %APP_CONTAINER_NAME% 2>nul
+echo -------------------^< APP LOGS ^>-----------------------
 echo.
 pause
 cls
 echo.
 echo ------------------^< REDIS LOGS ^>----------------------
 docker logs %REDIS_CONTAINER_NAME% 2>nul
+echo ------------------^< REDIS LOGS ^>----------------------
 echo.
 pause
 cls
 echo.
 echo ------------------^< MYSQL LOGS ^>----------------------
 docker logs %MYSQL_CONTAINER_NAME% 2>nul
+echo ------------------^< MYSQL LOGS ^>----------------------
 echo.
 pause
 cls
 echo.
 echo -----------------^< BROKER LOGS ^>----------------------
 docker logs %BROKER_CONTAINER_NAME% 2>nul
+echo -----------------^< BROKER LOGS ^>----------------------
 echo.
 pause
 cls
@@ -184,6 +188,7 @@ exit /b
 echo.
 echo -------------------^< APP LOGS ^>-----------------------
 docker logs %APP_CONTAINER_NAME% 2>nul
+echo -------------------^< APP LOGS ^>-----------------------
 echo.
 pause
 cls
@@ -195,6 +200,7 @@ for /f "tokens=* delims=\n" %%a in ('docker exec %APP_CONTAINER_NAME% ls %APP_LO
         echo.
         echo ^< %%a ^>
         docker exec %APP_CONTAINER_NAME% cat %APP_LOG_PATH%%%a 2>nul
+        echo ^< %%a ^>
         echo.
         pause
         cls
@@ -240,12 +246,14 @@ exit /b
 echo.
 echo ------------------^< MYSQL LOGS ^>----------------------
 docker logs %MYSQL_CONTAINER_NAME% 2>nul
+echo ------------------^< MYSQL LOGS ^>----------------------
 echo.
 pause
 cls
 echo.
 echo ------------------^< REDIS LOGS ^>----------------------
 docker logs %REDIS_CONTAINER_NAME% 2>nul
+echo ------------------^< REDIS LOGS ^>----------------------
 echo.
 pause
 cls
@@ -279,6 +287,7 @@ goto status_all
 echo.
 echo -----------------^< BROKER LOGS ^>----------------------
 docker logs %BROKER_CONTAINER_NAME% 2>nul
+echo -----------------^< BROKER LOGS ^>----------------------
 echo.
 pause
 cls
