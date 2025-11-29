@@ -1,8 +1,12 @@
-import os
-import uvicorn
-
-
 if __name__ == "__main__":
+    import os
+    import uvicorn
+
+    from dotenv import find_dotenv, load_dotenv
+
+    
+    load_dotenv(find_dotenv())
+
     uvicorn.run(
         app="create:app",
         host=os.getenv("APP_HOST", "0.0.0.0"),
