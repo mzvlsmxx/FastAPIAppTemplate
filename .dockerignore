@@ -1,0 +1,26 @@
+# ENV files
+.env
+
+# Database files
+**.db
+data/database.db
+
+# Logs
+**.log
+
+# Git
+.gitignore
+.git
+
+# Docker compose
+docker-compose.yml
+Dockerfile
+
+# Miscellaneous
+misc/
+
+# Old
+**_old.py
+
+# Batch scripts
+*.bat

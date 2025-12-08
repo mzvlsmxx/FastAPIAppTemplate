@@ -1,0 +1,10 @@
+# Miscellaneous
+misc/
+
+# Python
+.venv/
+.idea/
+__pycache__/
+
+# Logs
+*.log

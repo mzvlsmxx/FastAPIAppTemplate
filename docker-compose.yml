@@ -1,0 +1,79 @@
+services:
+  fastapi-app-template:
+    image: mzvlsmxx/fastapi-app-template:v0.0.0
+    container_name: fastapi-app-template
+    build: .
+    environment:
+      - APP_HOST=0.0.0.0
+      - APP_PORT=7777
+      - APP_RELOAD=True
+      - REDIS_HOST=fastapi-app-template-redis
+      - REDIS_PORT=6379
+      - BROKER_HOST=fastapi-app-template-kafka
+      - BROKER_PORT=29092
+      - MYSQL_HOST=fastapi-app-template-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWD=passwd
+    ports:
+      - "7777:7777"
+    depends_on:
+      - fastapi-app-template-redis
+      - fastapi-app-template-mysql
+      - fastapi-app-template-kafka
+    networks:
+      - fastapi-app-template-network
+
+  fastapi-app-template-zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: fastapi-app-template-zookeeper
+    ports:
+      - "776:2181"
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_TICK_TIME=2000
+    networks:
+      - fastapi-app-template-network
+
+  fastapi-app-template-kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: fastapi-app-template-kafka
+    hostname: fastapi-app-template_kafka
+    ports:
+      - "7771:9092"
+      - "7772:29092"
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=fastapi-app-template-zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://fastapi-app-template-kafka:29092,PLAINTEXT_HOST://localhost:9092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+    depends_on:
+      - fastapi-app-template-zookeeper
+    networks:
+      - fastapi-app-template-network
+
+
+  fastapi-app-template-redis:
+    image: redis:7.0-alpine
+    container_name: fastapi-app-template-redis
+    ports:
+      - "778:6379"
+    networks:
+      - fastapi-app-template-network
+
+  fastapi-app-template-mysql:
+    image: mysql:8.0.44-debian
+    container_name: fastapi-app-template-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=passwd
+    ports:
+      - "779:3306"
+    networks:
+      - fastapi-app-template-network
+
+networks:
+  fastapi-app-template-network:
+    name: fastapi-app-template-network
+    driver: bridge
