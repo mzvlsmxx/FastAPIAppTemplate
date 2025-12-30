@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+fun1 () {
+    echo fun1
+    fun2
+}
+
+fun2 () {
+    echo fun2
+}
+
+fun1
