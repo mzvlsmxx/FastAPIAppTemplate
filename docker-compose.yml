@@ -5,7 +5,7 @@ services:
     build: .
     environment:
       - APP_HOST=0.0.0.0
-      - APP_PORT=7777
+      - APP_PORT=60000
       - APP_RELOAD=True
       - REDIS_HOST=fastapi-app-template-redis
       - REDIS_PORT=6379
@@ -16,7 +16,7 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWD=passwd
     ports:
-      - "7777:7777"
+      - "60000:60000"
     depends_on:
       - fastapi-app-template-redis
       - fastapi-app-template-mysql
@@ -27,8 +27,6 @@ services:
   fastapi-app-template-zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
     container_name: fastapi-app-template-zookeeper
-    ports:
-      - "776:2181"
     environment:
       - ZOOKEEPER_CLIENT_PORT=2181
       - ZOOKEEPER_TICK_TIME=2000
@@ -40,8 +38,8 @@ services:
     container_name: fastapi-app-template-kafka
     hostname: fastapi-app-template_kafka
     ports:
-      - "7771:9092"
-      - "7772:29092"
+      - "60003:9092"
+      - "60004:29092"
     environment:
       - KAFKA_BROKER_ID=1
       - KAFKA_ZOOKEEPER_CONNECT=fastapi-app-template-zookeeper:2181
@@ -59,7 +57,7 @@ services:
     image: redis:7.0-alpine
     container_name: fastapi-app-template-redis
     ports:
-      - "778:6379"
+      - "60001:6379"
     networks:
       - fastapi-app-template-network
 
@@ -69,7 +67,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=passwd
     ports:
-      - "779:3306"
+      - "60002:3306"
     networks:
       - fastapi-app-template-network
 

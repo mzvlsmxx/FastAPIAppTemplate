@@ -8,7 +8,7 @@ import logs as log
 
 
 kafka_host = os.getenv('BROKER_HOST', '127.0.0.1')
-kafka_port = int(os.getenv('BROKER_PORT', 7772))
+kafka_port = int(os.getenv('BROKER_PORT', 60004))
 
 
 class KafkaClient:

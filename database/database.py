@@ -12,10 +12,10 @@ load_dotenv(find_dotenv())
 
 
 redis_host = os.getenv('REDIS_HOST', '127.0.0.1')
-redis_port = int(os.getenv('REDIS_PORT', 778))
+redis_port = int(os.getenv('REDIS_PORT', 60001))
 
 mysql_host = os.getenv('MYSQL_HOST', '127.0.0.1')
-mysql_port = int(os.getenv('MYSQL_PORT', 779))
+mysql_port = int(os.getenv('MYSQL_PORT', 60002))
 mysql_user = os.getenv('MYSQL_USER', 'root')
 mysql_passwd = os.getenv('MYSQL_PASSWD', 'passwd')
 
