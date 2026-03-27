@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
 from endpoints.root import router as router_root
-from endpoints.data import router as router_endpoints
+from endpoints.service import router as router_service
 
-routers: list[APIRouter] = [router_root, router_endpoints]
+routers: list[APIRouter] = [router_root, router_service]

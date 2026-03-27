@@ -4,4 +4,7 @@ jinja2
 mysql-connector-python
 redis[hiredis]
 python-dotenv
+argon2-cffi
+pyjwt
 confluent-kafka
+sqlalchemy

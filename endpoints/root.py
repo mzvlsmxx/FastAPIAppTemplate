@@ -17,7 +17,13 @@ router = APIRouter(
 async def root(request: Request) -> HTMLResponse:
     log.actions.info(f'GET on root')
     return templates.TemplateResponse(
+        request=request,
         name="index.html",
         context={"request": request, "button_text": "Test text"},
         status_code=200
     )
+    # return templates.TemplateResponse(
+    #     name="index.html",
+    #     context={"request": request, "button_text": "Test text"},
+    #     status_code=200
+    # )
