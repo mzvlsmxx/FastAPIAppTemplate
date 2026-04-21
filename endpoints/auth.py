@@ -6,7 +6,7 @@ from typing import Annotated
 from fastapi import APIRouter, HTTPException, status
 from fastapi.params import Depends
 from fastapi.security import OAuth2PasswordRequestForm
-import jwt
+# import jwt
 
 from database import MySQLDatabase, RedisDatabase
 import logs as log
@@ -39,7 +39,7 @@ def signup(user: UserCreate):
     
     try:
         MySQLDatabase().register_user(
-            email=user.email,
+            username=user.username,
             password=user.password,
             first_name=user.first_name,
             middle_name=user.middle_name,

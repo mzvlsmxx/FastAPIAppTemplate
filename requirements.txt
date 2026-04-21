@@ -1,10 +1,10 @@
 fastapi
 uvicorn[standard]
 jinja2
-mysql-connector-python
+pymysql
 redis[hiredis]
 python-dotenv
 argon2-cffi
-pyjwt
+pyseto
 confluent-kafka
 sqlalchemy
